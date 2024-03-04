@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries Flags Game</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="icon" href="/assets/earth-icon.ico" type="image/x-icon">
+</head>
+<body class="bg-[#1F2544] flex flex-col items-center">
+    <header class="items-center mx-32 my-12 text-center p-10">
+        <h1 class="text-3xl justify-center text-[#FFD0EC]">Countries Flags Game</h1>
+    </header>
+    
+<div>
+    <div class="flex">
+        <!-- Retângulo -->
+        <div class="w-82 h-120 bg-[#474F7A] p-10 rounded-lg flex flex-col items-center justify-center gap-10">
+            <div class="flex flex-col items-center">
+                <pre class="text-[#FFD0EC] mb-1">score:</pre>
+                <pre id="score" class="text-[#FFD0EC] w-20 h-10 bg-[#81689D] flex items-center justify-center">0</pre>
+            </div>
+        
+            <div class="flex flex-col items-center">
+                <pre class="text-[#FFD0EC] mb-1">lifes:</pre>
+                <pre id="lifes" class="text-[#FFD0EC] w-20 h-10 bg-[#81689D] flex items-center justify-center">3</pre>
+            </div>
+        </div>       
+    
+        <div class="w-640 h-64">
+            <img id="flag" alt="Country image" class="object-cover width-640 h-64 max-w-full max-h-full ml-14">
+        </div>
+    </div>
+    
+    <div class="mt-4 grid grid-cols-2 gap-1 ml-44">
+
+        <!-- Opção 1 -->
+        <div class="flex items-end justify-start p-4">
+            <button class="text-white text-center bg-[#474F7A] border-4 border-[#81689D] h-16 w-52 rounded whitespace-pre-wrap hover:bg-pink-600" onclick="verificarChute(1)" id="option1">Opção 1</button>
+        </div>
+    
+        <!-- Opção 2 -->
+        <div class="flex items-end justify-end p-4">
+            <button class="text-white text-center bg-[#474F7A] border-4 border-[#81689D] h-16 w-52 rounded whitespace-pre-wrap hover:bg-pink-600" onclick="verificarChute(2)" id="option2">Opção 2</button>
+        </div>
+    
+        <!-- Opção 3 -->
+        <div class="flex items-start justify-start p-4">
+            <button class="text-white text-center bg-[#474F7A] border-4 border-[#81689D] h-16 w-52 rounded whitespace-pre-wrap hover:bg-pink-600" onclick="verificarChute(3)" id="option3">Opção 3</button>
+        </div>
+    
+        <!-- Opção 4 -->
+        <div class="flex items-start justify-end p-4">
+            <button class="text-white text-center bg-[#474F7A] border-4 border-[#81689D] h-16 w-52 rounded whitespace-pre-wrap hover:bg-pink-600" onclick="verificarChute(4)" id="option4">Opção 4</button>
+        </div>
+    </div>
+    
+    
+    
+    
+</div>
+    <footer class="text-white mt-52">Made By Robert Alexander</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

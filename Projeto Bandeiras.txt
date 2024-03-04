@@ -1,0 +1,5 @@
+Projeto Bandeiras:
+API: https://flagpedia.net/download/api
+Tem que aprender a usar
+https://flagcdn.com/w640/br.jpg
+npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
