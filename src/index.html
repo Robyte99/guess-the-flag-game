@@ -1,66 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countries Flags Game</title>
-    <link rel="stylesheet" href="output.css">
-    <link rel="icon" href="/assets/earth-icon.ico" type="image/x-icon">
-</head>
-<body class="bg-[#1F2544] flex flex-col items-center">
-    <header class="items-center mx-32 my-12 text-center p-10">
-        <h1 class="text-3xl justify-center text-[#FFD0EC]">Countries Flags Game</h1>
-    </header>
-    
-<div>
-    <div class="flex">
-        <!-- Retângulo -->
-        <div class="w-82 h-120 bg-[#474F7A] p-10 rounded-lg flex flex-col items-center justify-center gap-10">
-            <div class="flex flex-col items-center">
-                <pre class="text-[#FFD0EC] mb-1">score:</pre>
-                <pre id="score" class="text-[#FFD0EC] w-20 h-10 bg-[#81689D] flex items-center justify-center">0</pre>
-            </div>
-        
-            <div class="flex flex-col items-center">
-                <pre class="text-[#FFD0EC] mb-1">lifes:</pre>
-                <pre id="lifes" class="text-[#FFD0EC] w-20 h-10 bg-[#81689D] flex items-center justify-center">3</pre>
-            </div>
-        </div>       
-    
-        <div class="w-640 h-64">
-            <img id="flag" alt="Country image" class="object-cover width-640 h-64 max-w-full max-h-full ml-14">
-        </div>
-    </div>
-    
-    <div class="mt-4 grid grid-cols-2 gap-1 ml-44">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="./assets/earth-icon.ico" type="image/x-icon">
 
-        <!-- Opção 1 -->
-        <div class="flex items-end justify-start p-4">
-            <button class="text-white text-center bg-[#474F7A] border-4 border-[#81689D] h-16 w-52 rounded whitespace-pre-wrap hover:bg-pink-600" onclick="verificarChute(1)" id="option1">Opção 1</button>
+    <style>
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.5s ease-in-out;
+        }
+
+        .animate-bounce-custom {
+            animation: bounce 1s;
+        }
+
+        .animate-shake {
+            animation: shake 0.5s;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-800 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <header class="mb-6">
+        <h1 class="text-5xl font-bold text-white">🌎 Countries Flags Game</h1>
+    </header>
+
+    <div class="flex gap-6">
+        <!-- Game Container -->
+        <div class="bg-white bg-opacity-90 rounded-xl shadow-2xl p-8 flex flex-col items-center w-[720px] min-h-[700px]">
+            <!-- Score and Lifes -->
+            <div class="flex space-x-12 mb-8">
+                <div class="text-center">
+                    <span class="block text-xl font-semibold text-gray-700">Score</span>
+                    <span id="score" class="block text-3xl font-bold text-indigo-600">0</span>
+                </div>
+                <div class="text-center">
+                    <span class="block text-xl font-semibold text-gray-700">Vidas</span>
+                    <span id="lifes" class="block text-3xl font-bold text-red-500">3</span>
+                </div>
+            </div>
+
+            <!-- Flag Image -->
+            <div id="flagContainer" class="mb-8 animate-fade-in w-[360px] h-[240px] flex items-center justify-center bg-white rounded shadow-md overflow-hidden">
+                <img id="flag" alt="Country Flag" class="object-contain w-full h-full">
+            </div>
+
+            <!-- Options -->
+            <div class="grid grid-cols-2 gap-6 mt-auto">
+                <button id="option1" onclick="verificarChute(1)"
+                    class="px-5 py-3 w-48 bg-indigo-600 hover:bg-indigo-700 text-white text-lg rounded shadow transition-transform transform hover:scale-105">
+                    Opção 1
+                </button>
+                <button id="option2" onclick="verificarChute(2)"
+                    class="px-5 py-3 w-48 bg-indigo-600 hover:bg-indigo-700 text-white text-lg rounded shadow transition-transform transform hover:scale-105">
+                    Opção 2
+                </button>
+                <button id="option3" onclick="verificarChute(3)"
+                    class="px-5 py-3 w-48 bg-indigo-600 hover:bg-indigo-700 text-white text-lg rounded shadow transition-transform transform hover:scale-105">
+                    Opção 3
+                </button>
+                <button id="option4" onclick="verificarChute(4)"
+                    class="px-5 py-3 w-48 bg-indigo-600 hover:bg-indigo-700 text-white text-lg rounded shadow transition-transform transform hover:scale-105">
+                    Opção 4
+                </button>
+            </div>
         </div>
-    
-        <!-- Opção 2 -->
-        <div class="flex items-end justify-end p-4">
-            <button class="text-white text-center bg-[#474F7A] border-4 border-[#81689D] h-16 w-52 rounded whitespace-pre-wrap hover:bg-pink-600" onclick="verificarChute(2)" id="option2">Opção 2</button>
-        </div>
-    
-        <!-- Opção 3 -->
-        <div class="flex items-start justify-start p-4">
-            <button class="text-white text-center bg-[#474F7A] border-4 border-[#81689D] h-16 w-52 rounded whitespace-pre-wrap hover:bg-pink-600" onclick="verificarChute(3)" id="option3">Opção 3</button>
-        </div>
-    
-        <!-- Opção 4 -->
-        <div class="flex items-start justify-end p-4">
-            <button class="text-white text-center bg-[#474F7A] border-4 border-[#81689D] h-16 w-52 rounded whitespace-pre-wrap hover:bg-pink-600" onclick="verificarChute(4)" id="option4">Opção 4</button>
+
+        <!-- Dica do País -->
+        <div id="dica" class="w-[300px] h-[700px] bg-indigo-100 text-indigo-900 rounded-xl p-6 text-sm text-left shadow-inner overflow-auto">
+            <strong>Dica:</strong><br>
+            Carregando...
         </div>
     </div>
-    
-    
-    
-    
-</div>
-    <footer class="text-white mt-52">Made By Robert Alexander</footer>
+
+    <footer class="mt-10 text-white text-sm">
+        Made By Robert Alexander
+    </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>
